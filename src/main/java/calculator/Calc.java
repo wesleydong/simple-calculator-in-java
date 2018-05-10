@@ -2,14 +2,14 @@ package calculator;
 
 public class Calc {
 	
-	public double add(int a, int b) {
+	public int add(int a, int b) {
 		int result = 0;
 		result = a + b;
 		
 		return result;
 	}
 	
-	public double Subtract(int a, int b) {
+	public int subtract(int a, int b) {
 		int result = 0;
 		result = a - b;
 		
