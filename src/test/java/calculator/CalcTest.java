@@ -1,62 +1,86 @@
+
 package calculator;
 
-import org.junit.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class CalcTest {
-	
-	@Test
-	public void shouldAddTwoNumbers() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.add(5, 7);
-		
-		assertThat(result).isEqualTo(12);
-	}
-	
-	@Test
-	public void shouldSubtractTwoNumbers() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.subtract(12, 7);
-		
-		assertThat(result).isEqualTo(5);
-	}
-	
-	@Test
-	public void shouldMultiplyTwoNumbers() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.multiply(3, 4);
-		
-		assertThat(result).isEqualTo(12);
-	}
-	
-	@Test
-	public void shouldDivideTwoNumbers() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.divide(12, 4);
-		
-		assertThat(result).isEqualTo(3);
-	}
-	
-	@Test
-	public void shouldMultiplyByZero() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.multiply(3, 0);
-		
-		assertThat(result).isEqualTo(0);
-	}
-	
-	/* Already handled
-	@Test
-	public void shouldNotDivideByZero() {
-		Calc calculator = new Calc();
-		
-		int result = calculator.divide(3, 0);
-		
-		assertThat(result).isNotEqualTo(0);
-	}*/
+    private static Calc calculator;
+
+    @BeforeClass
+    public static void boot() {
+        calculator = new Calc();
+    }
+
+    @Test
+    public void shouldAddTwoNumbers() {
+        int result = calculator.add(5, 7);
+        assertEquals(result, 5 + 7);
+    }
+
+    @Test
+    public void shouldSubtractTwoNumbers() {
+        int result = calculator.subtract(12, 7);
+        assertEquals(result, 12 - 7);
+    }
+
+    @Test
+    public void shouldMultiplyTwoNumbers() {
+        int result = calculator.multiply(3, 4);
+        assertEquals(result, 3 * 4);
+    }
+
+    @Test
+    public void shouldDivideTwoNumbers() {
+        int result = calculator.divide(12, 4);
+        assertEquals(result, 12 / 4);
+    }
+
+    @Test
+    public void shouldMultiplyByZero() {
+        int result = calculator.multiply(3, 0);
+        assertEquals(result, 3 * 0);
+    }
+
+    @Test
+    public void catchDivideBy0() {
+        try {
+            calculator.divide(5, 0);
+            assert (false);
+        }
+        catch (Exception e_) {
+            assert (true);
+        }
+    }
+
+    @Test
+    public void catchOverAdd() {
+
+        try {
+            calculator.add(Integer.MAX_VALUE, Integer.MAX_VALUE);
+            assert (false);
+        }
+        catch (Exception e_) {
+            assert (true);
+        }
+
+    }
+    
+    
+    
+    @Test
+    public void catchOverMult() {
+
+        try {
+            calculator.multiply(Integer.MAX_VALUE, Integer.MAX_VALUE);
+            assert (false);
+        }
+        catch (Exception e_) {
+            assert (true);
+        }
+
+    }
+
 }
