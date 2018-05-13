@@ -67,9 +67,7 @@ public class CalcTest {
         }
 
     }
-    
-    
-    
+
     @Test
     public void catchOverMult() {
 
